@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "244754702458",
+    "project_id": "test-pravin-patil",
+    "storage_bucket": "test-pravin-patil.appspot.com"
+  },
+  "client": [
+    
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244754702458:android:59f28a1e0fb19672e11bc3",
+        "android_client_info": {
+          "package_name": "com.intro.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkGqm3g4dpLaHEHvxtc4Z0IxfRSYdvu_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
