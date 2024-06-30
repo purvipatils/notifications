@@ -1,20 +1,31 @@
- RestTemplate restTemplate = new RestTemplate();
+//import org.json.JSONObject;
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.set("Authorization", "key=" + SERVER_KEY);
+@GetMapping("/sendNotification")
+	public void sendNotification() {
 
-        JSONObject body = new JSONObject();
-        body.put("to", "YOUR_DEVICE_TOKEN");
+		RestTemplate restTemplate = new RestTemplate();
 
-        JSONObject notification = new JSONObject();
-        notification.put("title", "Test Title");
-        notification.put("body", "Test Body");
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.set("Authorization", "key=" + SERVER_KEY);
 
-        body.put("notification", notification);
+		JSONObject body = new JSONObject();
+		body.put("to", DEVICE_TOKEN);
 
-        HttpEntity<String> request = new HttpEntity<>(body.toString(), headers);
+		JSONObject notification = new JSONObject();
+		notification.put("title", "Test Title");
+		notification.put("body", "Test Body");
 
-        ResponseEntity<String> response = restTemplate.exchange(FCM_URL, HttpMethod.POST, request, String.class);
+		body.put("notification", notification);
 
-        System.out.println("Response: " + response.getBody());
+		HttpEntity<String> request = new HttpEntity<>(body.toString(), headers);
+
+		try {
+			ResponseEntity<String> response = restTemplate.exchange(FCM_URL, HttpMethod.POST, request, String.class);
+			logger.info("FCM Response: {}", response.getBody());
+		} catch (Exception e) {
+			logger.error("Error sending FCM notification", e);
+		}
+	}
+
+
